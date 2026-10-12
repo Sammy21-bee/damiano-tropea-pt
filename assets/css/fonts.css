@@ -1,0 +1,29 @@
+/* ==========================================================================
+   Font self-hosted (licenza SIL Open Font License - Google Fonts)
+   Inter: variable font 100-900  |  Barlow Condensed: static 700 / 800
+   Sostituisci i file in assets/fonts/ solo con font di cui hai i diritti d'uso.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/Inter-var.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/BarlowCondensed-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../fonts/BarlowCondensed-800.woff2') format('woff2');
+}
