@@ -1739,3 +1739,39 @@ body { padding-bottom: 78px; }
   }
   .journey-dots button.is-active { width: 24px; background: var(--accent); }
 }
+
+/* Mobile: barra CTA compatta e flottante, WhatsApp ben visibile sopra */
+@media (max-width: 639px) {
+  .mobile-cta-bar {
+    left: 12px;
+    right: 12px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    gap: 8px;
+    padding: 7px;
+    background: rgba(14, 14, 18, .92);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    box-shadow: 0 16px 34px -12px rgba(0, 0, 0, .85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .mobile-cta-bar .btn {
+    min-height: 44px;
+    padding: 10px 16px;
+    font-size: .88rem;
+  }
+  .mobile-cta-bar .btn--primary { flex: 1.5; }
+  .mobile-cta-bar .btn--wa-outline { flex: 1; gap: 7px; }
+  .mobile-cta-bar .btn svg { width: 18px; height: 18px; }
+  .wa-float {
+    right: 14px;
+    bottom: calc(10px + 58px + 14px + env(safe-area-inset-bottom));
+    padding: 0;
+    width: 52px;
+    height: 52px;
+    justify-content: center;
+    box-shadow: 0 12px 26px -8px rgba(0, 0, 0, .75), 0 0 0 4px rgba(37, 211, 102, .18);
+  }
+  .wa-float svg { width: 26px; height: 26px; }
+  body { padding-bottom: 82px; }
+}
