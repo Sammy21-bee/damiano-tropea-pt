@@ -413,6 +413,50 @@
   }
 
   /* ---------------------------------------------------------------
+     Carosello "Il mio percorso" (visibile solo su mobile via CSS)
+     --------------------------------------------------------------- */
+  (function () {
+    var track = document.querySelector('.journey');
+    if (!track) return;
+    var steps = track.querySelectorAll('.journey-step');
+    if (!steps.length) return;
+
+    var dots = document.createElement('div');
+    dots.className = 'journey-dots';
+    dots.setAttribute('aria-label', 'Tappe del percorso');
+    var buttons = [];
+    Array.prototype.forEach.call(steps, function (step, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Vai alla tappa ' + (i + 1));
+      b.addEventListener('click', function () {
+        track.scrollTo({ left: step.offsetLeft - (track.clientWidth - step.offsetWidth) / 2, behavior: 'smooth' });
+      });
+      dots.appendChild(b);
+      buttons.push(b);
+    });
+    track.parentNode.insertBefore(dots, track.nextSibling);
+
+    function update() {
+      var center = track.scrollLeft + track.clientWidth / 2;
+      var best = 0, bestDist = Infinity;
+      Array.prototype.forEach.call(steps, function (step, i) {
+        var d = Math.abs(step.offsetLeft + step.offsetWidth / 2 - center);
+        if (d < bestDist) { bestDist = d; best = i; }
+      });
+      buttons.forEach(function (b, i) { b.classList.toggle('is-active', i === best); });
+    }
+    var ticking = false;
+    track.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { ticking = false; update(); });
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  /* ---------------------------------------------------------------
      Anno nel footer
      --------------------------------------------------------------- */
   var yearEl = document.getElementById('year');
