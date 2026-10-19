@@ -1684,3 +1684,23 @@ body { padding-bottom: 78px; }
 }
 
 .form-status-link { display: inline-block; margin-top: 8px; font-weight: 700; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Mobile: percorso compatto, foto accanto al testo */
+@media (max-width: 639px) {
+  .journey { gap: 26px; margin-top: 26px; }
+  .journey-step {
+    grid-template-columns: 38% 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+  .journey-step:nth-child(even) { grid-template-columns: 1fr 38%; }
+  .journey-step:nth-child(even) .journey-photo { order: 2; }
+  .journey-photo {
+    margin-inline: 0;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+  }
+  .journey-num { font-size: 1.7rem; }
+  .journey-text h3 { margin: 4px 0 6px; font-size: 1.2rem; }
+  .journey-text p { font-size: .92rem; line-height: 1.5; }
+}
