@@ -188,16 +188,6 @@
       grid.appendChild(card);
     });
 
-    var target = Math.max(slots, 4);
-    for (var i = slots; i < target; i++) {
-      var empty = el('figure', 'testimonial-card is-empty');
-      var box = el('div', 'testimonial-empty');
-      box.appendChild(el('span', 'placeholder-text', '[Inserire foto testimonianza autorizzata]'));
-      box.appendChild(el('span', 'slot-hint', 'Spazio riservato — solo foto reali e autorizzate'));
-      empty.appendChild(box);
-      grid.appendChild(empty);
-      slots++;
-    }
     grid.setAttribute('data-count', String(slots));
   }
 
@@ -338,15 +328,26 @@
     }
     if (!url) return null;
 
-    var opened = window.open('about:blank', '_blank');
-    function go() { if (opened) opened.location.href = url; else window.open(url, '_blank', 'noopener'); }
+    function showChatLink(message) {
+      showStatus('ok', message + ' ');
+      var a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.className = 'form-status-link';
+      a.textContent = 'Apri ' + label + ' ora';
+      statusBox.appendChild(a);
+    }
 
-    copyText(text).then(function () {
-      go();
-      showStatus('ok', 'Richiesta copiata. Si apre ' + label + ': incolla il messaggio nella chat e invialo.');
+    // Prima si avvia la copia (la pagina ha ancora il focus), poi si apre la chat nel clic stesso.
+    var copied = copyText(text);
+    var opened = window.open(url, '_blank');
+    if (opened) { try { opened.opener = null; } catch (e) {} }
+
+    copied.then(function () {
+      showChatLink('Richiesta copiata negli appunti. Nella chat ' + label + ' incolla il messaggio e invialo.');
     }).catch(function () {
-      go();
-      showStatus('warn', 'Si apre ' + label + ', ma non sono riuscito a copiare il testo. Scrivi tu il messaggio nella chat.');
+      showChatLink('Non sono riuscito a copiare il testo: nella chat ' + label + ' scrivi tu il messaggio.');
     });
     return true;
   }

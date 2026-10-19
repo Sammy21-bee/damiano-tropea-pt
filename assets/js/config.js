@@ -25,7 +25,7 @@ window.SITE_CONFIG = {
   /* TESTIMONIANZE — da 2 a 6 foto fornite e AUTORIZZATE dai clienti.
      Copia i file in assets/img/testimonianze/ e aggiungi una voce per ciascuno:
        { src: 'assets/img/testimonianze/cliente-1.jpg', alt: 'Descrizione della foto', caption: 'Didascalia (facoltativa)' }
-     Per un prima/dopo usa { before: '...', after: '...', alt, caption } (occupa 2 posti). Gli spazi liberi fino a 4 restano segnaposto. */
+     Per un prima/dopo usa { before: '...', after: '...', alt, caption } (occupa 2 posti). I segnaposto vuoti non vengono più mostrati. */
   testimonials: [
     {
       before: 'assets/img/testimonianze/prima.jpg',
@@ -45,6 +45,21 @@ window.SITE_CONFIG = {
       url: 'https://www.tiktok.com/@damianotropea_pt/video/7667174741265927457',
       title: 'Non mollare mai',
       thumb: 'assets/img/tiktok/video-1.jpg'
+    },
+    {
+      url: 'https://www.tiktok.com/@damianotropea_pt/video/7639348243624676640',
+      title: 'Drop set: tecnica di intensità',
+      thumb: 'assets/img/tiktok/video-2.jpg'
+    },
+    {
+      url: 'https://www.tiktok.com/@damianotropea_pt/video/7644995233415056672',
+      title: 'Ci vuole metodo?',
+      thumb: 'assets/img/tiktok/video-3.jpg'
+    },
+    {
+      url: 'https://www.tiktok.com/@damianotropea_pt/video/7649813142050049302',
+      title: 'Per crescere muscolarmente',
+      thumb: 'assets/img/tiktok/video-4.jpg'
     }
   ]
 };
