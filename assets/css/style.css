@@ -1775,3 +1775,22 @@ body { padding-bottom: 78px; }
   .wa-float svg { width: 26px; height: 26px; }
   body { padding-bottom: 82px; }
 }
+
+/* Mobile: niente cerchio WhatsApp (c'e gia nella barra) e barra piu piccola */
+@media (max-width: 639px) {
+  .wa-float { display: none; }
+  .mobile-cta-bar {
+    left: 22px;
+    right: 22px;
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    gap: 6px;
+    padding: 5px;
+  }
+  .mobile-cta-bar .btn {
+    min-height: 38px;
+    padding: 7px 12px;
+    font-size: .82rem;
+  }
+  .mobile-cta-bar .btn svg { width: 16px; height: 16px; }
+  body { padding-bottom: 66px; }
+}
